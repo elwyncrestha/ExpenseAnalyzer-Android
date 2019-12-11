@@ -1,2 +1,3 @@
-# Expense-Analyzer
-Daily life expense analyzer.
+# Expense Analyzer
+* Android Application
+* Daily life expense analyzer.

@@ -1,12 +1,11 @@
 package com.elvin.expense_analyzer.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.elvin.expense_analyzer.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.elvin.expense_analyzer.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
                 finish();
             }
         }, 2000);

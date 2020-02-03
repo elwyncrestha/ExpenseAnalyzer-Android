@@ -18,7 +18,6 @@ import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.LoginDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
-import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         this.etLoginUsername = findViewById(R.id.etLoginUsername);
         this.etLoginPassword = findViewById(R.id.etLoginPassword);
         Button btnLogin = findViewById(R.id.btnLogin);
-        TextView tvForgotPasswordLink = findViewById(R.id.tvForgotPasswordLink);
+        TextView tvRegisterLink = findViewById(R.id.tvRegisterLink);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        tvForgotPasswordLink.setOnClickListener(new View.OnClickListener() {
+        tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));

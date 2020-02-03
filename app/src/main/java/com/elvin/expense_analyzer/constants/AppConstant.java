@@ -6,4 +6,5 @@ package com.elvin.expense_analyzer.constants;
 public class AppConstant {
     public static final String SHARED_PREFERENCE_NAME = "ExpenseAnalyzer";
     public static final String AUTHENTICATION_TOKEN = "AuthenticationToken";
+    public static final String RESET_EMAIL_ADDRESS = "Reset Email Address";
 }

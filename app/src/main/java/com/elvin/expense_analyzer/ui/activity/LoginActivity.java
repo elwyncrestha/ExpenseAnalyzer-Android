@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.LoginDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
+import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
 
 import java.io.IOException;
@@ -28,7 +30,6 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etLoginUsername, etLoginPassword;
-    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,10 @@ public class LoginActivity extends AppCompatActivity {
 
         this.etLoginUsername = findViewById(R.id.etLoginUsername);
         this.etLoginPassword = findViewById(R.id.etLoginPassword);
-        this.btnLogin = findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.btnLogin);
+        TextView tvForgotPasswordLink = findViewById(R.id.tvForgotPasswordLink);
 
-        this.btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = etLoginUsername.getText().toString().trim();
@@ -69,6 +71,16 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e("User Login", "Failed to login", e);
                     Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        tvForgotPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(
+                        LoginActivity.this,
+                        SharedPreferencesUtils.checkUser(getApplicationContext()) ? MainActivity.class : RegisterActivity.class));
+                finish();
             }
         });
     }

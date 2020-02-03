@@ -41,4 +41,12 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"/>
 
+    <TextView
+        android:id="@+id/tvForgotPasswordLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_account_register"
+        style="@style/StyleLoginFormInput"
+        android:gravity="center"/>
+
 </LinearLayout>

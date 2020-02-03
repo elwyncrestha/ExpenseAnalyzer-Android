@@ -28,10 +28,10 @@ public interface UserService {
     Call<User> getAuthenticated(@Header("Authorization") String token);
 
     @GET(UserService.URL + "/logout")
-    Call<Void> logout();
+    Call<Void> logout(@Header("Authorization") String token);
 
     @GET(UserService.URL + "/logout/all")
-    Call<Void> logoutAll();
+    Call<Void> logoutAll(@Header("Authorization") String token);
 
     @GET(UserService.URL + "/reset-password/email/{value}")
     Call<User> initiateResetPassword(@Path("value") String email);

@@ -1,7 +1,6 @@
 package com.elvin.expense_analyzer.ui.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,11 +12,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
-import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.LoginDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
+import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
 
 import java.io.IOException;
@@ -60,11 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
 
-                    SharedPreferences sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
-                    sharedPreferences.edit().putString(
-                            AppConstant.AUTHENTICATION_TOKEN,
-                            Objects.requireNonNull(userResponse.body()).getToken()
-                    ).apply();
+                    SharedPreferencesUtils.setAuthToken(getApplicationContext(), Objects.requireNonNull(userResponse.body()).getToken());
+
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 } catch (IOException e) {

@@ -4,5 +4,13 @@
     <string name="app_logo">App Logo</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="password_8">Password (at least 8 digits)</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="no_account_register"><u>No Account? Register here</u></string>
+    <string name="tvHaveAccount"><u>Have Account? Login instead</u></string>
+    <string name="first_name">First Name</string>
+    <string name="middle_name">Middle Name (Optional)</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
 </resources>

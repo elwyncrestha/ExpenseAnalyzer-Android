@@ -1,7 +1,6 @@
 package com.elvin.expense_analyzer.ui.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
-import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -50,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_SHORT).show();
 
-                    SharedPreferences sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
-                    sharedPreferences.edit().putString(AppConstant.AUTHENTICATION_TOKEN, null).apply();
+                    SharedPreferencesUtils.setAuthToken(getApplicationContext(), null);
 
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();

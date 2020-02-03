@@ -41,4 +41,9 @@ public class SharedPreferencesUtils {
         SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
         return sharedPreferences.getString(AppConstant.AUTHENTICATION_TOKEN, null);
     }
+
+    public static void setAuthToken(Context context, String token) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().putString(AppConstant.AUTHENTICATION_TOKEN, token).apply();
+    }
 }

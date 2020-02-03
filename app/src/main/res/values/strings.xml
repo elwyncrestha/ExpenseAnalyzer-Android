@@ -6,9 +6,13 @@
     <string name="password">Password</string>
     <string name="password_8">Password (at least 8 digits)</string>
     <string name="login">Login</string>
+    <string name="verify">Verify</string>
     <string name="register">Register</string>
     <string name="no_account_register"><u>No Account? Register here</u></string>
-    <string name="tvHaveAccount"><u>Have Account? Login instead</u></string>
+    <string name="have_account"><u>Have Account? Login instead</u></string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="know_password"><u>Know your password? Login instead</u></string>
+    <string name="reset_password">Enter your email to get the token</string>
     <string name="first_name">First Name</string>
     <string name="middle_name">Middle Name (Optional)</string>
     <string name="last_name">Last Name</string>

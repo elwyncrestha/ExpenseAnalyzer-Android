@@ -77,8 +77,8 @@
         android:id="@+id/tvHaveAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tvHaveAccount"
-        style="@style/StyleRegisterFormInput"
+        android:text="@string/have_account"
+        style="@style/StyleTextLink"
         android:gravity="center"/>
 
 </LinearLayout>

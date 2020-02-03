@@ -77,9 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPasswordLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(
-                        LoginActivity.this,
-                        SharedPreferencesUtils.checkUser(getApplicationContext()) ? MainActivity.class : RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
             }
         });

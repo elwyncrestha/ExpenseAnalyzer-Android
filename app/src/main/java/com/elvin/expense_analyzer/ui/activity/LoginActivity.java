@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     Response<LoginDto> userResponse = userCall.execute();
                     if (!userResponse.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
+                        return;
                     }
 
                     SharedPreferences sharedPreferences = getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);

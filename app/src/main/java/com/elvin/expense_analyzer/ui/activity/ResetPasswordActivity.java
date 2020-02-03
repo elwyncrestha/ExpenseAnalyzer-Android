@@ -1,7 +1,5 @@
 package com.elvin.expense_analyzer.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.elvin.expense_analyzer.R;
+import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
@@ -55,8 +56,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         return;
                     }
 
-                    startActivity(new Intent(ResetPasswordActivity.this, NewPasswordActivity.class));
-                    finish();
+                    Intent intent = new Intent(ResetPasswordActivity.this, NewPasswordActivity.class);
+                    intent.putExtra(AppConstant.RESET_EMAIL_ADDRESS, email);
+                    startActivity(intent);
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.e("Reset Password Initiation", "Failed to initiate user password reset", e);

@@ -36,4 +36,9 @@ public class SharedPreferencesUtils {
             return false;
         }
     }
+
+    public static String getAuthToken(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(AppConstant.SHARED_PREFERENCE_NAME, MODE_PRIVATE);
+        return sharedPreferences.getString(AppConstant.AUTHENTICATION_TOKEN, null);
+    }
 }

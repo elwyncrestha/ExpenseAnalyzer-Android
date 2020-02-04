@@ -1,8 +1,8 @@
 package com.elvin.expense_analyzer.endpoint.service;
 
 import com.elvin.expense_analyzer.endpoint.model.User;
-import com.elvin.expense_analyzer.endpoint.model.dto.LoginDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResetPasswordDto;
+import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,7 +22,7 @@ public interface UserService {
     Call<User> save(@Body User user);
 
     @POST(UserService.URL + "/login")
-    Call<LoginDto> login(@Body User user);
+    Call<ResponseDto> login(@Body User user);
 
     @GET(UserService.URL + "/authenticated")
     Call<User> getAuthenticated(@Header("Authorization") String token);

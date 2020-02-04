@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.model.User;
-import com.elvin.expense_analyzer.endpoint.model.dto.LoginDto;
+import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -50,16 +50,16 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User();
                 user.setUsername(username);
                 user.setPassword(password);
-                Call<LoginDto> userCall = userService.login(user);
+                Call<ResponseDto> userCall = userService.login(user);
                 StrictMode.StrictMode();
                 try {
-                    Response<LoginDto> userResponse = userCall.execute();
+                    Response<ResponseDto> userResponse = userCall.execute();
                     if (!userResponse.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    SharedPreferencesUtils.setAuthToken(getApplicationContext(), Objects.requireNonNull(userResponse.body()).getToken());
+                    SharedPreferencesUtils.setAuthToken(getApplicationContext(), Objects.requireNonNull(userResponse.body()).getDetail());
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();

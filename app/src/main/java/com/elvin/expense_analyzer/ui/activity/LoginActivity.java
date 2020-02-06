@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     SharedPreferencesUtils.setAuthToken(getApplicationContext(), Objects.requireNonNull(userResponse.body()).getDetail());
 
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ForemostActivity.class));
                     finish();
                 } catch (IOException e) {
                     e.printStackTrace();

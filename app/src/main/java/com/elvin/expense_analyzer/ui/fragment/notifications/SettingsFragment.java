@@ -11,13 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.elvin.expense_analyzer.R;
 
-public class NotificationsFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
+        View root = inflater.inflate(R.layout.fragment_settings, container, false);
         return root;
     }
 }

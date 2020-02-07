@@ -20,9 +20,11 @@ import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.ui.activity.LoginActivity;
+import com.elvin.expense_analyzer.utils.Base64Utils;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -33,9 +35,11 @@ import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
-    Button btnLogout, btnLogoutAll, btnProfileSave;
+    private Button btnLogout, btnLogoutAll, btnProfileSave;
     private TextView tvProfileName;
     private EditText etProfileFirstName, etProfileMiddleName, etProfileLastName, etProfileEmail, etProfileUsername;
+    private CircularImageView profileImage;
+
     private User authenticatedUser;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +47,7 @@ public class ProfileFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        this.profileImage = root.findViewById(R.id.profileImage);
         this.tvProfileName = root.findViewById(R.id.tvProfileName);
         this.etProfileFirstName = root.findViewById(R.id.etProfileFirstName);
         this.etProfileMiddleName = root.findViewById(R.id.etProfileMiddleName);
@@ -92,6 +97,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void fillProfileForm(User user) {
+        profileImage.setImageBitmap(Base64Utils.toImage(user.getImage()));
         tvProfileName.setText(
                 String.format(
                         Locale.ENGLISH,

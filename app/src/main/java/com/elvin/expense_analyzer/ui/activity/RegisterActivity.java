@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                User user = new User(firstName, middleName, lastName, email, username, password, null);
+                User user = new User(firstName, middleName, lastName, email, username, password, null, null);
 
                 UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
                 Call<ResponseDto<User>> userCall = userService.save(user);

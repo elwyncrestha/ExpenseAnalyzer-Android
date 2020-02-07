@@ -1,6 +1,10 @@
 package com.elvin.expense_analyzer.ui.fragment.profile;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.elvin.expense_analyzer.R;
@@ -32,6 +37,8 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
 
@@ -61,6 +68,7 @@ public class ProfileFragment extends Fragment {
         final UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
 
         this.loadProfile(userService);
+        this.uploadProfileImageConfig();
 
         this.btnProfileSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +80,17 @@ public class ProfileFragment extends Fragment {
         this.logoutConfigurations(userService);
 
         return root;
+    }
+
+    private void uploadProfileImageConfig() {
+        this.profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Select profile image"), 1);
+            }
+        });
     }
 
     private void loadProfile(UserService userService) {
@@ -97,7 +116,10 @@ public class ProfileFragment extends Fragment {
     }
 
     private void fillProfileForm(User user) {
-        profileImage.setImageBitmap(Base64Utils.toImage(user.getImage()));
+        profileImage.setImageBitmap(
+                TextUtils.isEmpty(user.getImage())
+                        ? BitmapFactory.decodeResource(getResources(), R.drawable.upload_default)
+                        : Base64Utils.toImage(user.getImage()));
         tvProfileName.setText(
                 String.format(
                         Locale.ENGLISH,
@@ -189,4 +211,27 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(listener);
         btnLogoutAll.setOnClickListener(listener);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    if (data != null) {
+                        ImageDecoder.Source source = ImageDecoder.createSource(this.getContext().getContentResolver(), data.getData());
+                        Bitmap bitmap = ImageDecoder.decodeBitmap(source);
+                        profileImage.setImageBitmap(bitmap);
+
+                        authenticatedUser.setImage(Base64Utils.toImageString(bitmap));
+                    }
+                }
+            } catch (IOException e) {
+                Log.e("Profile Image", "Failed to save image", e);
+            }
+        }
+    }
+
+
 }

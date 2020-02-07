@@ -50,10 +50,10 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User();
                 user.setUsername(username);
                 user.setPassword(password);
-                Call<ResponseDto> userCall = userService.login(user);
+                Call<ResponseDto<String>> userCall = userService.login(user);
                 StrictMode.StrictMode();
                 try {
-                    Response<ResponseDto> userResponse = userCall.execute();
+                    Response<ResponseDto<String>> userResponse = userCall.execute();
                     if (!userResponse.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
                         return;

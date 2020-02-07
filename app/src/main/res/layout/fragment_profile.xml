@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,247 +9,165 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:id="@+id/headerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/reports_header_bk"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="40dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/ic_dropdown_arrow" />
-
-                <TextView
-                    android:id="@+id/salesHeaderTextView"
-                    android:text="Good Morning,"
-                    android:layout_marginTop="30dp"
-                    style="@style/reportContentText" />
-
-                <TextView
-                    style="@style/viewParent.headerText"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/colorWhite"
-                    android:layout_below="@id/salesHeaderTextView"
-                    android:text="Elvin Shrestha"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="70dp"/>
-
-
-            </RelativeLayout>
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/cardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/headerLayout"
                 android:gravity="center"
-                android:layout_marginTop="-80dp">
+                android:id="@+id/topHeader"
+                android:background="@drawable/reports_header_bk"
+                android:orientation="vertical"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp">
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="9dp"
-                    android:src="@drawable/profile"
+                    android:id="@+id/userID"
                     android:padding="3dp"
-                    android:id="@+id/userID"/>
+                    android:src="@drawable/logo_cropped" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="Elvin Shrestha"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="vertical"
-                android:layout_below="@id/cardLayout">
+                android:layout_below="@id/topHeader"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Explore More"
-                    android:textColor="#000"
-                    android:textSize="20dp"
-                    android:layout_marginTop="20dp"
                     android:textAlignment="center"
-                    android:textStyle="bold"/>
+                    android:paddingBottom="8dp"
+                    android:text="@string/first_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
+                <EditText
+                    android:id="@+id/etProfileFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:hint="@string/first_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/salesImageView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_control_point_duplicate_black_24dp"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
-
-                            <TextView
-                                style="@style/reportContentText"
-                                android:text="Category"
-                                android:textSize="16dp"
-                                android:textColor="#25C0DE"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/middle_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/salesImageView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_payment_black_24dp"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
-
-                            <TextView
-                                style="@style/reportContentText"
-                                android:text="Payment Method"
-                                android:textSize="16dp"
-                                android:textColor="#25C0DE"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <EditText
+                    android:id="@+id/etProfileMiddleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:hint="@string/middle_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/salesImageView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_account_balance_wallet_black_24dp"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
-
-                            <TextView
-                                style="@style/reportContentText"
-                                android:text="Status"
-                                android:textSize="16dp"
-                                android:textColor="#25C0DE"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="5dp"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/last_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/email"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text="@string/username"
+                    android:textAlignment="center"
+                    android:textColor="@color/fragmentTextColor"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
+                <EditText
+                    android:id="@+id/etProfileUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
 
-                        <ImageView
-                            android:id="@+id/salesImageView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_person_pin_black_24dp"/>
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/reports_header_bk"
+                    android:text="@string/logout"
+                    android:textColor="#fff" />
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
-
-                            <TextView
-                                style="@style/reportContentText"
-                                android:text="User Profile"
-                                android:textSize="16dp"
-                                android:id="@+id/txt_profile"
-                                android:textColor="#25C0DE"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
+                <Button
+                    android:id="@+id/btnLogoutAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/reports_header_bk"
+                    android:text="@string/logout_all"
+                    android:textColor="#fff" />
 
             </LinearLayout>
 
-
         </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

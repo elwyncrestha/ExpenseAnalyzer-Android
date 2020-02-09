@@ -11,6 +11,7 @@
     android:layout_marginRight="10dp">
 
     <RelativeLayout
+        android:id="@+id/rlCategoryDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -22,12 +23,13 @@
             android:src="@drawable/ic_attach_money_black_24dp"/>
 
         <LinearLayout
+            android:id="@+id/llCategoryDetailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/ivCategoryDetailIcon">
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/ivCategoryDetailIcon">
 
             <TextView
                 android:id="@+id/tvCategoryName"
@@ -41,6 +43,25 @@
                 android:text="@string/category_type"/>
 
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibCategoryEdit"
+            style="@style/reportContentText"
+            android:text="@string/category_name"
+            android:layout_toStartOf="@id/ibCategoryDelete"
+            android:padding="20dp"
+            android:background="@drawable/ic_edit_black_24dp"
+            android:textColor="#25C0DE" />
+
+        <ImageButton
+            android:id="@+id/ibCategoryDelete"
+            style="@style/viewParent.headerText"
+            android:text="@string/category_type"
+            android:layout_alignParentEnd="true"
+            android:padding="20dp"
+            android:background="@drawable/ic_delete_black_24dp"
+            android:textSize="21sp" />
+
 
     </RelativeLayout>
 

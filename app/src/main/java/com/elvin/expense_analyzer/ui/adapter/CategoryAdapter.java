@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategoryName, tvCategoryType;
         ImageView ivCategoryDetailIcon;
+        ImageButton ibCategoryEdit, ibCategoryDelete;
 
 
         public CustomViewHolder(@NonNull View itemView) {
@@ -65,6 +67,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
             tvCategoryName = itemView.findViewById(R.id.tvCategoryName);
             tvCategoryType = itemView.findViewById(R.id.tvCategoryType);
             ivCategoryDetailIcon = itemView.findViewById(R.id.ivCategoryDetailIcon);
+            ibCategoryEdit = itemView.findViewById(R.id.ibCategoryEdit);
+            ibCategoryDelete = itemView.findViewById(R.id.ibCategoryDelete);
         }
     }
 }

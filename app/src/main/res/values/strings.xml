@@ -55,4 +55,5 @@
     <string name="category_name">Category Name</string>
     <string name="category_type">Category Type</string>
     <string name="your_categories">Your Categories</string>
+    <string name="add_category">Add Category</string>
 </resources>

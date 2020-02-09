@@ -97,7 +97,7 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:id="@+id/salesImageView"
+                            android:id="@+id/categoryIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_control_point_duplicate_black_24dp"/>
@@ -108,7 +108,7 @@
                             android:orientation="vertical"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
+                            android:layout_toRightOf="@id/categoryIcon">
 
                             <TextView
                                 style="@style/reportContentText"
@@ -138,7 +138,7 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:id="@+id/salesImageView"
+                            android:id="@+id/paymentMethodIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_payment_black_24dp"/>
@@ -149,7 +149,7 @@
                             android:orientation="vertical"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
+                            android:layout_toRightOf="@id/paymentMethodIcon">
 
                             <TextView
                                 style="@style/reportContentText"
@@ -179,7 +179,7 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:id="@+id/salesImageView"
+                            android:id="@+id/statusIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_account_balance_wallet_black_24dp"/>
@@ -190,7 +190,7 @@
                             android:orientation="vertical"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
+                            android:layout_toRightOf="@id/statusIcon">
 
                             <TextView
                                 style="@style/reportContentText"
@@ -220,7 +220,7 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:id="@+id/salesImageView"
+                            android:id="@+id/aboutIcon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_person_pin_black_24dp"/>
@@ -231,7 +231,7 @@
                             android:orientation="vertical"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="20dp"
-                            android:layout_toRightOf="@id/salesImageView">
+                            android:layout_toRightOf="@id/aboutIcon">
 
                             <TextView
                                 style="@style/reportContentText"

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.model.User;
+import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
@@ -47,10 +48,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 }
 
                 UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
-                Call<User> userCall = userService.initiateResetPassword(email);
+                Call<ResponseDto<User>> userCall = userService.initiateResetPassword(email);
                 StrictMode.StrictMode();
                 try {
-                    Response<User> response = userCall.execute();
+                    Response<ResponseDto<User>> response = userCall.execute();
                     if (!response.isSuccessful()) {
                         Toast.makeText(ResetPasswordActivity.this, "Failed to initiate user password reset", Toast.LENGTH_SHORT).show();
                         return;

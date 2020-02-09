@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/topHeader"
+                android:background="@drawable/reports_header_bk"
+                android:orientation="vertical"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="9dp"
+                    android:id="@+id/profileImage"
+                    android:padding="3dp"
+                    android:src="@drawable/logo_cropped" />
+
+                <TextView
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="@string/name"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topHeader"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/first_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/first_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/middle_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileMiddleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/middle_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/last_name"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:paddingBottom="8dp"
+                    android:text="@string/email"
+                    android:textColor="@color/fragmentTextColor"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text="@string/username"
+                    android:textAlignment="center"
+                    android:textColor="@color/fragmentTextColor"
+                    android:layout_marginTop="15dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etProfileUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username"
+                    android:textAlignment="center"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnProfileSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/reports_header_bk"
+                    android:text="@string/save"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/reports_header_bk"
+                    android:text="@string/logout"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/btnLogoutAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/reports_header_bk"
+                    android:text="@string/logout_all"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

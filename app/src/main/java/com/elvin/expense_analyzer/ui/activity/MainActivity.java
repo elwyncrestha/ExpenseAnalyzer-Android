@@ -27,40 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnLogout, btnLogoutAll;
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogoutAll = findViewById(R.id.btnLogoutAll);
 
-        final UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
-
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String token = "Bearer " + SharedPreferencesUtils.getAuthToken(getApplicationContext());
-                Call<Void> call = v.getId() == R.id.btnLogout
-                        ? userService.logout(token)
-                        : userService.logoutAll(token);
-                try {
-                    Response<Void> response = call.execute();
-                    if (!response.isSuccessful()) {
-                        Toast.makeText(MainActivity.this, "Failed to logout", Toast.LENGTH_SHORT).show();
-                    }
-
-                    Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_SHORT).show();
-
-                    SharedPreferencesUtils.setAuthToken(getApplicationContext(), null);
-
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e("Logout Current", "Failed to logout current device", e);
-                    Toast.makeText(MainActivity.this, "Failed to logout", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        StrictMode.StrictMode();
-        btnLogout.setOnClickListener(listener);
-        btnLogoutAll.setOnClickListener(listener);
     }
 }

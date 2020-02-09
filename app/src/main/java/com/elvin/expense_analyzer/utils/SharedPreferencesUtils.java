@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.model.User;
+import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 
 import java.io.IOException;
@@ -25,10 +26,10 @@ public class SharedPreferencesUtils {
         String token = sharedPreferences.getString(AppConstant.AUTHENTICATION_TOKEN, null);
 
         UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
-        Call<User> userCall = userService.getAuthenticated("Bearer " + token);
+        Call<ResponseDto<User>> userCall = userService.getAuthenticated("Bearer " + token);
         StrictMode.StrictMode();
         try {
-            Response<User> response = userCall.execute();
+            Response<ResponseDto<User>> response = userCall.execute();
             return response.isSuccessful();
         } catch (IOException e) {
             e.printStackTrace();

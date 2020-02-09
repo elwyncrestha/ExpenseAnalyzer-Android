@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.model.User;
+import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 
@@ -74,13 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                User user = new User(firstName, middleName, lastName, email, username, password, null);
+                User user = new User(firstName, middleName, lastName, email, username, password, null, null);
 
                 UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
-                Call<User> userCall = userService.save(user);
-                userCall.enqueue(new Callback<User>() {
+                Call<ResponseDto<User>> userCall = userService.save(user);
+                userCall.enqueue(new Callback<ResponseDto<User>>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
+                    public void onResponse(Call<ResponseDto<User>> call, Response<ResponseDto<User>> response) {
                         if (!response.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this, "Failed to register!!!", Toast.LENGTH_SHORT).show();
                             return;
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                    public void onFailure(Call<ResponseDto<User>> call, Throwable t) {
                         Log.e("User Registration", "Failed to register", t);
                         Toast.makeText(RegisterActivity.this, "Failed to register!!!", Toast.LENGTH_SHORT).show();
                     }

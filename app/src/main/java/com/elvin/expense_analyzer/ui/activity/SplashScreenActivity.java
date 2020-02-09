@@ -22,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(
                         SplashScreenActivity.this,
-                        SharedPreferencesUtils.checkUser(getApplicationContext()) ? MainActivity.class : LoginActivity.class));
+                        SharedPreferencesUtils.checkUser(getApplicationContext()) ? ForemostActivity.class : LoginActivity.class));
                 finish();
             }
         }, 2000);

@@ -51,4 +51,9 @@
     <string name="my_email">elwyncrestha@gmail.com</string>
     <string name="my_contact_number">+9779860687788</string>
     <string name="my_location">Dillibazar, Kathmandu</string>
+    <string name="zero">0</string>
+    <string name="category_name">Category Name</string>
+    <string name="category_type">Category Type</string>
+    <string name="your_categories">Your Categories</string>
+    <string name="add_category">Add Category</string>
 </resources>

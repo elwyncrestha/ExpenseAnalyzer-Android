@@ -62,8 +62,9 @@
                             android:textColor="#79D0A3" />
 
                         <TextView
+                            android:id="@+id/tvIncomeCategoryCount"
                             style="@style/viewParent.headerText"
-                            android:text="1290"
+                            android:text="@string/zero"
                             android:textSize="27sp" />
                     </LinearLayout>
 
@@ -87,8 +88,9 @@
                             android:textColor="#79D0A3" />
 
                         <TextView
+                            android:id="@+id/tvExpenseCategoryCount"
                             style="@style/viewParent.headerText"
-                            android:text="29200"
+                            android:text="@string/zero"
                             android:textSize="27sp" />
                     </LinearLayout>
 

@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.elvin.expense_analyzer.R;
+import com.elvin.expense_analyzer.ui.activity.AboutActivity;
 import com.elvin.expense_analyzer.ui.activity.CategoryActivity;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
@@ -41,6 +42,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.cardCategory:
                 startActivity(new Intent(getContext(), CategoryActivity.class));
+                break;
+            case R.id.cardAbout:
+                startActivity(new Intent(getContext(), AboutActivity.class));
                 break;
             default:
                 Toast.makeText(getContext(), "Invalid action", Toast.LENGTH_SHORT).show();

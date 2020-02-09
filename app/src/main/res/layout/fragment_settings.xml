@@ -31,7 +31,7 @@
 
                 <TextView
                     android:id="@+id/salesHeaderTextView"
-                    android:text="Good Morning,"
+                    android:text="@string/whatisup"
                     android:layout_marginTop="30dp"
                     style="@style/reportContentText" />
 
@@ -60,8 +60,7 @@
                     android:layout_height="120dp"
                     android:layout_margin="9dp"
                     android:src="@drawable/logo_cropped"
-                    android:padding="3dp"
-                    android:id="@+id/userID"/>
+                    android:padding="3dp"/>
             </LinearLayout>
 
             <LinearLayout

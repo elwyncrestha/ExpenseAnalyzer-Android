@@ -22,23 +22,26 @@ import java.util.List;
  */
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CustomViewHolder> {
 
-    List<Category> categoryList;
+    private List<Category> categoryList;
     private Context context;
+    private CategoryAdapterListener listener;
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+        notifyDataSetChanged();
+    }
 
     public CategoryAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
 
-    @NonNull
-    @Override
-    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_category_detail, parent, false);
-        return new CustomViewHolder(view);
+    public void setCategoryAdapterListener(CategoryAdapterListener listener) {
+        this.listener = listener;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, final int position) {
         final Category category = categoryList.get(position);
 
         holder.tvCategoryName.setText(category.getName());
@@ -48,6 +51,29 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
                         ? R.drawable.ic_attach_money_black_24dp
                         : R.drawable.ic_money_off_black_24dp
         );
+        holder.ibCategoryDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onDelete(category.getId(), position);
+            }
+        });
+    }
+
+    @NonNull
+    @Override
+    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_category_detail, parent, false);
+        return new CustomViewHolder(view);
+    }
+
+    public interface CategoryAdapterListener {
+        /**
+         * Delete callback.
+         *
+         * @param id       Category ID.
+         * @param position Item position.
+         */
+        void onDelete(String id, int position);
     }
 
     @Override

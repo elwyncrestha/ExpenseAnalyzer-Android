@@ -21,7 +21,9 @@ import com.elvin.expense_analyzer.endpoint.service.CategoryService;
 import com.elvin.expense_analyzer.ui.adapter.CategoryAdapter;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
+import com.elvin.expense_analyzer.utils.StrictMode;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -77,32 +79,71 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void loadCategories() {
-        Call<ResponseDto<List<Category>>> call =
-                this.categoryService.getAll(SharedPreferencesUtils.getAuthToken(getApplicationContext()));
-        call.enqueue(new Callback<ResponseDto<List<Category>>>() {
+        final CategoryAdapter categoryAdapter = new CategoryAdapter(
+                getApplicationContext(),
+                fetchCategories()
+        );
+        CategoryAdapter.CategoryAdapterListener listener = new CategoryAdapter.CategoryAdapterListener() {
             @Override
-            public void onResponse(Call<ResponseDto<List<Category>>> call, Response<ResponseDto<List<Category>>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            public void onDelete(String id, final int position) {
+                Call<Void> call = categoryService.delete(
+                        SharedPreferencesUtils.getAuthToken(getApplicationContext()),
+                        id
+                );
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(CategoryActivity.this, "Failed to delete category", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
-                List<Category> categoryList = response.body().getDetail();
-                CategoryAdapter categoryAdapter = new CategoryAdapter(getApplicationContext(), categoryList);
+                        Toast.makeText(CategoryActivity.this, "Successfully deleted category", Toast.LENGTH_SHORT).show();
+
+                        List<Category> categoryList = fetchCategories();
+                        if (categoryList == null || categoryList.isEmpty()) {
+                            Toast.makeText(CategoryActivity.this, "Failed to refresh categories", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        categoryAdapter.setCategoryList(categoryList);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("Delete Category", "Failed to delete category", t);
+                        Toast.makeText(CategoryActivity.this, "Failed to delete category", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+        categoryAdapter.setCategoryAdapterListener(listener);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),
                         LinearLayoutManager.VERTICAL, false);
                 rvCategories.setLayoutManager(layoutManager);
                 rvCategories.setHasFixedSize(true);
                 rvCategories.setAdapter(categoryAdapter);
                 categoryAdapter.notifyDataSetChanged();
+    }
+
+    public final List<Category> fetchCategories() {
+        Call<ResponseDto<List<Category>>> call =
+                this.categoryService.getAll(SharedPreferencesUtils.getAuthToken(getApplicationContext()));
+        try {
+            StrictMode.StrictMode();
+            Response<ResponseDto<List<Category>>> response = call.execute();
+            if (!response.isSuccessful()) {
+                Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
+                return null;
             }
 
-            @Override
-            public void onFailure(Call<ResponseDto<List<Category>>> call, Throwable t) {
-                Log.e("Category List", "Failed to load categories", t);
-                Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
-            }
-        });
+            return response.body().getDetail();
+        } catch (IOException e) {
+            Log.e("Category List", "Failed to load categories", e);
+            Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
+        }
+
+        return null;
     }
 
     @Override

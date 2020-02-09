@@ -30,4 +30,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
     <string name="whatisup">What\'s up?</string>
+    <string name="today">Today</string>
+    <string name="thisWeek">This Week</string>
+    <string name="thisMonth">This Month</string>
+    <string name="thisYear">This Year</string>
 </resources>

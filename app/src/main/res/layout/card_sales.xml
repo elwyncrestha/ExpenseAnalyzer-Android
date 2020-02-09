@@ -31,7 +31,7 @@
 
             <TextView
                 style="@style/reportContentText"
-                android:text="This Month"
+                android:text="@string/thisYear"
                 android:textColor="#25C0DE"/>
             <TextView
                 style="@style/viewParent.headerText"

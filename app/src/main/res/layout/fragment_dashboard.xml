@@ -27,7 +27,7 @@
                     android:id="@+id/salesHeaderTextView"
                     style="@style/reportContentText"
                     android:layout_marginTop="30dp"
-                    android:text="Current Balance" />
+                    android:text="@string/today" />
 
                 <TextView
                     style="@style/viewParent.headerText"
@@ -61,8 +61,8 @@
 
                         <TextView
                             style="@style/reportContentText"
-                            android:layout_width="match_parent"
-                            android:text="Today"
+                            android:layout_width="wrap_content"
+                            android:text="@string/thisWeek"
                             android:textAlignment="center"
                             android:textColor="#79D0A3" />
 
@@ -87,7 +87,8 @@
 
                         <TextView
                             style="@style/reportContentText"
-                            android:text="This Week"
+                            android:layout_width="wrap_content"
+                            android:text="@string/thisMonth"
                             android:textColor="#79D0A3" />
 
                         <TextView
@@ -105,8 +106,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cardLayout"
                 android:orientation="vertical">
-
-                <include layout="@layout/card_sales" />
 
                 <include layout="@layout/card_sales" />
 

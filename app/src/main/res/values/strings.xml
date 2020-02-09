@@ -52,4 +52,7 @@
     <string name="my_contact_number">+9779860687788</string>
     <string name="my_location">Dillibazar, Kathmandu</string>
     <string name="zero">0</string>
+    <string name="category_name">Category Name</string>
+    <string name="category_type">Category Type</string>
+    <string name="your_categories">Your Categories</string>
 </resources>

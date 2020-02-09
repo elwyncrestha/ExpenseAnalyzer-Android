@@ -6,13 +6,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.elvin.expense_analyzer.R;
+import com.elvin.expense_analyzer.endpoint.model.Category;
 import com.elvin.expense_analyzer.endpoint.model.dto.CategoryCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.CategoryService;
+import com.elvin.expense_analyzer.ui.adapter.CategoryAdapter;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +28,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private TextView tvIncomeCategoryCount, tvExpenseCategoryCount;
     private CategoryService categoryService;
+    private RecyclerView rvCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,13 @@ public class CategoryActivity extends AppCompatActivity {
 
         this.bindControls();
         this.loadCounts();
+        this.loadCategories();
+    }
+
+    private void bindControls() {
+        this.tvIncomeCategoryCount = findViewById(R.id.tvIncomeCategoryCount);
+        this.tvExpenseCategoryCount = findViewById(R.id.tvExpenseCategoryCount);
+        this.rvCategories = findViewById(R.id.rvCategories);
     }
 
     private void loadCounts() {
@@ -58,8 +72,33 @@ public class CategoryActivity extends AppCompatActivity {
         });
     }
 
-    private void bindControls() {
-        this.tvIncomeCategoryCount = findViewById(R.id.tvIncomeCategoryCount);
-        this.tvExpenseCategoryCount = findViewById(R.id.tvExpenseCategoryCount);
+    private void loadCategories() {
+        Call<ResponseDto<List<Category>>> call =
+                this.categoryService.getAll(SharedPreferencesUtils.getAuthToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponseDto<List<Category>>>() {
+            @Override
+            public void onResponse(Call<ResponseDto<List<Category>>> call, Response<ResponseDto<List<Category>>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Category> categoryList = response.body().getDetail();
+                CategoryAdapter categoryAdapter = new CategoryAdapter(getApplicationContext(), categoryList);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),
+                        LinearLayoutManager.VERTICAL, false);
+                rvCategories.setLayoutManager(layoutManager);
+                rvCategories.setHasFixedSize(true);
+                rvCategories.setAdapter(categoryAdapter);
+                categoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseDto<List<Category>>> call, Throwable t) {
+                Log.e("Category List", "Failed to load categories", t);
+                Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

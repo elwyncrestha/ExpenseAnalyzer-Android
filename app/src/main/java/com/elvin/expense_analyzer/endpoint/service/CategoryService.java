@@ -43,4 +43,7 @@ public interface CategoryService {
 
     @GET(CategoryService.URL + "/status-count")
     Call<ResponseDto<CategoryCountDto>> statusCount(@Header("Authorization") String token);
+
+    @GET(CategoryService.URL + "/{id}")
+    Call<ResponseDto<Category>> getById(@Header("Authorization") String token, @Path("id") String id);
 }

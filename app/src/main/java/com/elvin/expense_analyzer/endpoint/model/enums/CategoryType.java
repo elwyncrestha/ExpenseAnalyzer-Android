@@ -20,4 +20,13 @@ public enum CategoryType {
     public String toString() {
         return value;
     }
+
+    public static CategoryType getEnum(String value) {
+        if (value == null)
+            throw new IllegalArgumentException();
+        for (CategoryType v : values())
+            if (value.equalsIgnoreCase(v.toString()))
+                return v;
+        throw new IllegalArgumentException();
+    }
 }

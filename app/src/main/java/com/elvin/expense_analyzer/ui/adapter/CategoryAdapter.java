@@ -41,7 +41,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         final Category category = categoryList.get(position);
 
         holder.tvCategoryName.setText(category.getName());
@@ -54,7 +54,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
         holder.ibCategoryDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onDelete(category.getId(), position);
+                listener.onDelete(category.getId());
+            }
+        });
+        holder.ibCategoryEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onUpdate(category.getId());
             }
         });
     }
@@ -70,10 +76,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Custom
         /**
          * Delete callback.
          *
-         * @param id       Category ID.
-         * @param position Item position.
+         * @param id Category ID.
          */
-        void onDelete(String id, int position);
+        void onDelete(String id);
+
+        /**
+         * Update callback.
+         *
+         * @param id Category ID.
+         */
+        void onUpdate(String id);
     }
 
     @Override

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elvin.expense_analyzer.R;
+import com.elvin.expense_analyzer.constants.AppConstant;
 import com.elvin.expense_analyzer.endpoint.model.Category;
 import com.elvin.expense_analyzer.endpoint.model.dto.CategoryCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
@@ -85,7 +86,7 @@ public class CategoryActivity extends AppCompatActivity {
         );
         CategoryAdapter.CategoryAdapterListener listener = new CategoryAdapter.CategoryAdapterListener() {
             @Override
-            public void onDelete(String id, final int position) {
+            public void onDelete(String id) {
                 Call<Void> call = categoryService.delete(
                         SharedPreferencesUtils.getAuthToken(getApplicationContext()),
                         id
@@ -115,6 +116,13 @@ public class CategoryActivity extends AppCompatActivity {
                         Toast.makeText(CategoryActivity.this, "Failed to delete category", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+
+            @Override
+            public void onUpdate(String id) {
+                Intent intent = new Intent(CategoryActivity.this, AddCategoryActivity.class);
+                intent.putExtra(AppConstant.CATEGORY_ID, id);
+                startActivity(intent);
             }
         };
         categoryAdapter.setCategoryAdapterListener(listener);

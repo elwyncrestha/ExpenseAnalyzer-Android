@@ -153,30 +153,6 @@
                     android:text="@string/save"
                     android:textColor="@color/colorWhite" />
 
-                <Button
-                    android:id="@+id/btnLogout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/reports_header_bk"
-                    android:text="@string/logout"
-                    android:textColor="@color/colorWhite" />
-
-                <Button
-                    android:id="@+id/btnLogoutAll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/reports_header_bk"
-                    android:text="@string/logout_all"
-                    android:textColor="@color/colorWhite" />
-
             </LinearLayout>
 
         </RelativeLayout>

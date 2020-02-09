@@ -24,11 +24,9 @@ import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
-import com.elvin.expense_analyzer.ui.activity.LoginActivity;
 import com.elvin.expense_analyzer.utils.Base64Utils;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
-import com.elvin.expense_analyzer.utils.StrictMode;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.IOException;
@@ -42,7 +40,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
 
-    private Button btnLogout, btnLogoutAll, btnProfileSave;
+    private Button btnProfileSave;
     private TextView tvProfileName;
     private EditText etProfileFirstName, etProfileMiddleName, etProfileLastName, etProfileEmail, etProfileUsername;
     private CircularImageView profileImage;
@@ -61,8 +59,6 @@ public class ProfileFragment extends Fragment {
         this.etProfileLastName = root.findViewById(R.id.etProfileLastName);
         this.etProfileEmail = root.findViewById(R.id.etProfileEmail);
         this.etProfileUsername = root.findViewById(R.id.etProfileUsername);
-        this.btnLogout = root.findViewById(R.id.btnLogout);
-        this.btnLogoutAll = root.findViewById(R.id.btnLogoutAll);
         this.btnProfileSave = root.findViewById(R.id.btnProfileSave);
 
         final UserService userService = RetrofitUtils.getRetrofit().create(UserService.class);
@@ -76,8 +72,6 @@ public class ProfileFragment extends Fragment {
                 updateProfileConfigurations(userService);
             }
         });
-
-        this.logoutConfigurations(userService);
 
         return root;
     }
@@ -179,37 +173,6 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "Failed to update profile", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void logoutConfigurations(final UserService userService) {
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String token = "Bearer " + SharedPreferencesUtils.getAuthToken(getContext());
-                Call<Void> call = v.getId() == R.id.btnLogout
-                        ? userService.logout(token)
-                        : userService.logoutAll(token);
-                try {
-                    Response<Void> response = call.execute();
-                    if (!response.isSuccessful()) {
-                        Toast.makeText(getContext(), "Failed to logout", Toast.LENGTH_SHORT).show();
-                    }
-
-                    Toast.makeText(getContext(), "Logout successful", Toast.LENGTH_SHORT).show();
-
-                    SharedPreferencesUtils.setAuthToken(getContext(), null);
-
-                    startActivity(new Intent(getContext(), LoginActivity.class));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e("Logout Current", "Failed to logout current device", e);
-                    Toast.makeText(getContext(), "Failed to logout", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        StrictMode.StrictMode();
-        btnLogout.setOnClickListener(listener);
-        btnLogoutAll.setOnClickListener(listener);
     }
 
     @Override

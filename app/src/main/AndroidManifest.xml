@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.activity.ForemostActivity"
-            android:label="@string/title_activity_foremost" />
+            android:label="@string/app_name" />
         <activity android:name=".ui.activity.NewPasswordActivity" />
         <activity android:name=".ui.activity.ResetPasswordActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />

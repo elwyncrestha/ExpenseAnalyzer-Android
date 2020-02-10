@@ -12,8 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.elvin.expense_analyzer.R;
-import com.elvin.expense_analyzer.ui.activity.AboutActivity;
-import com.elvin.expense_analyzer.ui.activity.CategoryActivity;
+import com.elvin.expense_analyzer.ui.activity.about.AboutActivity;
+import com.elvin.expense_analyzer.ui.activity.category.CategoryActivity;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 

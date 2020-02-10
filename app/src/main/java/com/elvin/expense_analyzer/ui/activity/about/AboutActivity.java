@@ -1,8 +1,8 @@
-package com.elvin.expense_analyzer.ui.activity;
-
-import androidx.fragment.app.FragmentActivity;
+package com.elvin.expense_analyzer.ui.activity.about;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.elvin.expense_analyzer.R;
 import com.google.android.gms.maps.CameraUpdateFactory;

@@ -1,4 +1,4 @@
-package com.elvin.expense_analyzer.ui.activity;
+package com.elvin.expense_analyzer.ui.activity.auth;
 
 import android.content.Intent;
 import android.os.Bundle;

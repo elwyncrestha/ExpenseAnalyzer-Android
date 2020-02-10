@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.ui.activity.about.AboutActivity;
 import com.elvin.expense_analyzer.ui.activity.category.CategoryActivity;
+import com.elvin.expense_analyzer.ui.activity.paymentmethod.PaymentMethodActivity;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
@@ -42,6 +43,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.cardCategory:
                 startActivity(new Intent(getContext(), CategoryActivity.class));
+                break;
+            case R.id.cardPaymentMethod:
+                startActivity(new Intent(getContext(), PaymentMethodActivity.class));
                 break;
             case R.id.cardAbout:
                 startActivity(new Intent(getContext(), AboutActivity.class));

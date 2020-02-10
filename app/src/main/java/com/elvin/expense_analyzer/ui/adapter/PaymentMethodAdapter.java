@@ -73,14 +73,14 @@ public class PaymentMethodAdapter extends RecyclerView.Adapter<PaymentMethodAdap
         /**
          * Delete callback.
          *
-         * @param id Category ID.
+         * @param id Payment Method ID.
          */
         void onDelete(String id);
 
         /**
          * Update callback.
          *
-         * @param id Category ID.
+         * @param id Payment Method ID.
          */
         void onUpdate(String id);
     }

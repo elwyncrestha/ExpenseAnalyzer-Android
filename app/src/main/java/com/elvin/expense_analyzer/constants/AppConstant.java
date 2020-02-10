@@ -9,4 +9,5 @@ public class AppConstant {
     public static final String RESET_EMAIL_ADDRESS = "Reset Email Address";
     public static final String CATEGORY_ID = "Category ID";
     public static final String PAYMENT_METHOD_ID = "Payment Method ID";
+    public static final String EXPENSE_STATUS_ID = "Expense Status ID";
 }

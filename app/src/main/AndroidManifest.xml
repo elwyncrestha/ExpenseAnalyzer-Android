@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.paymentmethod.AddPaymentMethodActivity"></activity>
+        <activity android:name=".ui.activity.expensestatus.AddExpenseStatusActivity"></activity>
+        <activity android:name=".ui.activity.expensestatus.ExpenseStatusActivity" />
+        <activity android:name=".ui.activity.paymentmethod.AddPaymentMethodActivity" />
         <activity android:name=".ui.activity.paymentmethod.PaymentMethodActivity" />
         <activity android:name=".ui.activity.category.AddCategoryActivity" />
         <!--

@@ -61,4 +61,9 @@
     <string name="your_payment_methods">Your Payment Methods</string>
     <string name="add_payment_method">Add Payment Method</string>
     <string name="payment_method_name">Payment Method Name</string>
+    <string name="status">Status</string>
+    <string name="total_statuses">Total Statuses</string>
+    <string name="your_statuses">Your Statuses</string>
+    <string name="add_expense_status">Add Status</string>
+    <string name="status_name">Status Name</string>
 </resources>

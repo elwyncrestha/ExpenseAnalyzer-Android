@@ -1,4 +1,4 @@
-package com.elvin.expense_analyzer.ui.activity;
+package com.elvin.expense_analyzer.ui.activity.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.model.User;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
+import com.elvin.expense_analyzer.ui.activity.main.ForemostActivity;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;

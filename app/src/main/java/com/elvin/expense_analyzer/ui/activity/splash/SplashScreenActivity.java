@@ -1,4 +1,4 @@
-package com.elvin.expense_analyzer.ui.activity;
+package com.elvin.expense_analyzer.ui.activity.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
+import com.elvin.expense_analyzer.ui.activity.auth.LoginActivity;
+import com.elvin.expense_analyzer.ui.activity.main.ForemostActivity;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 
 public class SplashScreenActivity extends AppCompatActivity {

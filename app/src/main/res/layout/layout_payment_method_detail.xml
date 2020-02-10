@@ -1,63 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/colorWhite"
-    app:cardCornerRadius="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@color/colorWhite"
+    app:cardCornerRadius="5dp">
 
     <RelativeLayout
-        android:id="@+id/rlCategoryDetail"
+        android:id="@+id/rlPaymentMethodDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/ivCategoryDetailIcon"
+            android:id="@+id/ivPaymentMethodDetailIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_attach_money_black_24dp"/>
+            android:src="@drawable/ic_attach_money_black_24dp" />
 
         <LinearLayout
-            android:id="@+id/llCategoryDetailText"
+            android:id="@+id/llPaymentMethodDetailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/ivCategoryDetailIcon">
+            android:layout_toEndOf="@id/ivPaymentMethodDetailIcon"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvCategoryName"
+                android:id="@+id/tvPaymentMethodName"
                 style="@style/reportContentText"
-                android:text="@string/category_name"
-                android:textColor="#25C0DE"/>
-            <TextView
-                android:id="@+id/tvCategoryType"
-                style="@style/viewParent.headerText"
-                android:textSize="21sp"
-                android:text="@string/category_type"/>
+                android:text="@string/payment_method_name"
+                android:textColor="#25C0DE" />
 
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/ibCategoryEdit"
+            android:id="@+id/ibPaymentMethodEdit"
             style="@style/reportContentText"
-            android:layout_toStartOf="@id/ibCategoryDelete"
-            android:padding="20dp"
+            android:layout_toStartOf="@id/ibPaymentMethodDelete"
             android:background="@drawable/ic_edit_black_24dp"
+            android:padding="20dp"
             android:textColor="#25C0DE" />
 
         <ImageButton
-            android:id="@+id/ibCategoryDelete"
+            android:id="@+id/ibPaymentMethodDelete"
             style="@style/viewParent.headerText"
             android:layout_alignParentEnd="true"
-            android:padding="20dp"
             android:background="@drawable/ic_delete_black_24dp"
+            android:padding="20dp"
             android:textSize="21sp" />
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.category.CategoryActivity">
+    tools:context=".ui.activity.paymentmethod.PaymentMethodActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="70dp"
-                    android:text="@string/category"
+                    android:text="@string/payment_method"
                     android:textColor="@color/colorWhite" />
 
 
@@ -57,39 +57,14 @@
                         <TextView
                             style="@style/reportContentText"
                             android:layout_width="wrap_content"
-                            android:text="@string/income_categories"
-                            android:textAlignment="center"
+                            android:text="@string/total_payment_methods"
                             android:textColor="#79D0A3" />
 
                         <TextView
-                            android:id="@+id/tvIncomeCategoryCount"
+                            android:id="@+id/tvPaymentMethodCount"
                             style="@style/viewParent.headerText"
-                            android:text="@string/zero"
-                            android:textSize="27sp" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    style="@style/reportsCardStyle"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="16dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/reportContentText"
                             android:layout_width="wrap_content"
-                            android:text="@string/expense_categories"
-                            android:textColor="#79D0A3" />
-
-                        <TextView
-                            android:id="@+id/tvExpenseCategoryCount"
-                            style="@style/viewParent.headerText"
+                            android:layout_gravity="center"
                             android:text="@string/zero"
                             android:textSize="27sp" />
                     </LinearLayout>
@@ -107,7 +82,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llCategoryExplore"
+                android:id="@+id/llPaymentMethodExplore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/middleHeader"
@@ -117,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="@string/your_categories"
+                    android:text="@string/your_payment_methods"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -125,11 +100,11 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCategories"
+                android:id="@+id/rvPaymentMethods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/llPaymentMethodExplore"
                 android:layout_marginTop="12dp"
-                android:layout_below="@+id/llCategoryExplore"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             </androidx.recyclerview.widget.RecyclerView>

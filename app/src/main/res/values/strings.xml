@@ -56,4 +56,9 @@
     <string name="category_type">Category Type</string>
     <string name="your_categories">Your Categories</string>
     <string name="add_category">Add Category</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="total_payment_methods">Total Payment Methods</string>
+    <string name="your_payment_methods">Your Payment Methods</string>
+    <string name="add_payment_method">Add Payment Method</string>
+    <string name="payment_method_name">Payment Method Name</string>
 </resources>

@@ -107,7 +107,7 @@
 
                             <TextView
                                 style="@style/reportContentText"
-                                android:text="Category"
+                                android:text="@string/category"
                                 android:textSize="16dp"
                                 android:textColor="#25C0DE"/>
 
@@ -149,7 +149,7 @@
 
                             <TextView
                                 style="@style/reportContentText"
-                                android:text="Payment Method"
+                                android:text="@string/payment_method"
                                 android:textSize="16dp"
                                 android:textColor="#25C0DE"/>
 
@@ -191,7 +191,7 @@
 
                             <TextView
                                 style="@style/reportContentText"
-                                android:text="Status"
+                                android:text="@string/status"
                                 android:textSize="16dp"
                                 android:textColor="#25C0DE"/>
 
@@ -276,7 +276,7 @@
 
                             <TextView
                                 style="@style/reportContentText"
-                                android:text="About"
+                                android:text="@string/about"
                                 android:textSize="16dp"
                                 android:id="@+id/txt_profile"
                                 android:textColor="#25C0DE"/>

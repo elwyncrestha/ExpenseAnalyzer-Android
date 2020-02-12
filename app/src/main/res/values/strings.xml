@@ -67,4 +67,8 @@
     <string name="add_expense_status">Add Status</string>
     <string name="status_name">Status Name</string>
     <string name="transaction">Transaction</string>
+    <string name="income_transactions">Income Transactions</string>
+    <string name="expense_transactions">Expense Transactions</string>
+    <string name="your_transactions">Your Transactions</string>
+    <string name="add_transaction">Add Transaction</string>
 </resources>

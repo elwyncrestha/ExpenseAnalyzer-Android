@@ -71,4 +71,6 @@
     <string name="expense_transactions">Expense Transactions</string>
     <string name="your_transactions">Your Transactions</string>
     <string name="add_transaction">Add Transaction</string>
+    <string name="payee_payer">Payee/Payer</string>
+    <string name="transaction_date">Transaction Date</string>
 </resources>

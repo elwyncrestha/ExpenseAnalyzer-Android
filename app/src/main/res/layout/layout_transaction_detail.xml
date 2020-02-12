@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@color/colorWhite"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:id="@+id/rlCategoryDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/tvTransactionDetailIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_multiline_chart_black_24dp" />
+
+        <LinearLayout
+            android:id="@+id/llTransactionDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/tvTransactionDetailIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTransactionPayeePayer"
+                style="@style/reportContentText"
+                android:text="@string/payee_payer"
+                android:textColor="#25C0DE" />
+
+            <TextView
+                android:id="@+id/tvTransactionAmount"
+                style="@style/viewParent.headerText"
+                android:text="@string/zero"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/tvTransactionDate"
+                style="@style/viewParent.headerText"
+                android:text="@string/transaction_date"
+                android:textSize="21sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibTransactionEdit"
+            style="@style/reportContentText"
+            android:layout_toStartOf="@id/ibTransactionDelete"
+            android:background="@drawable/ic_edit_black_24dp"
+            android:padding="20dp"
+            android:textColor="#25C0DE" />
+
+        <ImageButton
+            android:id="@+id/ibTransactionDelete"
+            style="@style/viewParent.headerText"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_delete_black_24dp"
+            android:padding="20dp"
+            android:textSize="21sp" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

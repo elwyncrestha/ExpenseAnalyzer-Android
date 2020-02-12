@@ -16,10 +16,11 @@ import com.elvin.expense_analyzer.ui.activity.about.AboutActivity;
 import com.elvin.expense_analyzer.ui.activity.category.CategoryActivity;
 import com.elvin.expense_analyzer.ui.activity.expensestatus.ExpenseStatusActivity;
 import com.elvin.expense_analyzer.ui.activity.paymentmethod.PaymentMethodActivity;
+import com.elvin.expense_analyzer.ui.activity.transaction.TransactionActivity;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
-    private CardView cardCategory, cardPaymentMethod, cardStatus, cardAbout;
+    private CardView cardCategory, cardPaymentMethod, cardStatus, cardAbout, cardTransaction;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,11 +31,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         this.cardPaymentMethod = root.findViewById(R.id.cardPaymentMethod);
         this.cardStatus = root.findViewById(R.id.cardStatus);
         this.cardAbout = root.findViewById(R.id.cardAbout);
+        this.cardTransaction = root.findViewById(R.id.cardTransaction);
 
         this.cardCategory.setOnClickListener(this);
         this.cardPaymentMethod.setOnClickListener(this);
         this.cardStatus.setOnClickListener(this);
         this.cardAbout.setOnClickListener(this);
+        this.cardTransaction.setOnClickListener(this);
 
         return root;
     }
@@ -50,6 +53,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.cardStatus:
                 startActivity(new Intent(getContext(), ExpenseStatusActivity.class));
+                break;
+            case R.id.cardTransaction:
+                startActivity(new Intent(getContext(), TransactionActivity.class));
                 break;
             case R.id.cardAbout:
                 startActivity(new Intent(getContext(), AboutActivity.class));

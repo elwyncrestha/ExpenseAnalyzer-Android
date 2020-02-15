@@ -65,6 +65,7 @@
                             android:id="@+id/tvIncomeTransactionCount"
                             style="@style/viewParent.headerText"
                             android:text="@string/zero"
+                            android:layout_gravity="center"
                             android:textSize="27sp" />
                     </LinearLayout>
 
@@ -91,6 +92,7 @@
                             android:id="@+id/tvExpenseTransactionCount"
                             style="@style/viewParent.headerText"
                             android:text="@string/zero"
+                            android:layout_gravity="center"
                             android:textSize="27sp" />
                     </LinearLayout>
 

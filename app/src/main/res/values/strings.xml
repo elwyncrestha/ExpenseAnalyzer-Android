@@ -73,4 +73,8 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="payee_payer">Payee/Payer</string>
     <string name="transaction_date">Transaction Date</string>
+    <string name="transaction_type">Transaction Type</string>
+    <string name="amount">Amount</string>
+    <string name="transaction_time">Transaction Time</string>
+    <string name="description">Description</string>
 </resources>

@@ -11,4 +11,6 @@ public class AppConstant {
     public static final String PAYMENT_METHOD_ID = "Payment Method ID";
     public static final String EXPENSE_STATUS_ID = "Expense Status ID";
     public static final String TRANSACTION_ID = "Transaction ID";
+    public static final String YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String HH_MM = "HH:mm";
 }

@@ -7,4 +7,5 @@
     <color name="colorBlack">#000000</color>
     <color name="contentTextColor">#020000</color>
     <color name="fragmentTextColor">#25C0DE</color>
+    <color name="fragmentTextColorNegative">#E97B20</color>
 </resources>

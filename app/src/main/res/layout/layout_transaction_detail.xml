@@ -11,13 +11,13 @@
     app:cardCornerRadius="5dp">
 
     <RelativeLayout
-        android:id="@+id/rlCategoryDetail"
+        android:id="@+id/rlTransactionDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/tvTransactionDetailIcon"
+            android:id="@+id/ivTransactionDetailIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_multiline_chart_black_24dp" />
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/tvTransactionDetailIcon"
+            android:layout_toEndOf="@id/ivTransactionDetailIcon"
             android:orientation="vertical">
 
             <TextView

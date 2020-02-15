@@ -106,9 +106,8 @@ public class AddCategoryActivity extends AppCompatActivity {
                         Toast.makeText(AddCategoryActivity.this, "Failed to save category", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    Category category = response.body().getDetail();
+                    Toast.makeText(AddCategoryActivity.this, "Successfully saved category", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddCategoryActivity.this, CategoryActivity.class));
-                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Category Save", "Failed to save category", e);
                     Toast.makeText(AddCategoryActivity.this, "Failed to save category", Toast.LENGTH_SHORT).show();

@@ -92,9 +92,8 @@ public class AddExpenseStatusActivity extends AppCompatActivity {
                         Toast.makeText(AddExpenseStatusActivity.this, "Failed to save expense status", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    ExpenseStatus expenseStatus = response.body().getDetail();
+                    Toast.makeText(AddExpenseStatusActivity.this, "Successfully saved status", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddExpenseStatusActivity.this, ExpenseStatusActivity.class));
-                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Expense Status Save", "Failed to save expense status", e);
                     Toast.makeText(AddExpenseStatusActivity.this, "Failed to save expense status", Toast.LENGTH_SHORT).show();

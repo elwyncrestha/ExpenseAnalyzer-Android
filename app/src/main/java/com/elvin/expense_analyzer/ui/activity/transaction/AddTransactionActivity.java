@@ -2,7 +2,9 @@ package com.elvin.expense_analyzer.ui.activity.transaction;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +38,7 @@ import com.elvin.expense_analyzer.utils.StrictMode;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -187,6 +190,82 @@ public class AddTransactionActivity extends AppCompatActivity implements
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        btnTransactionSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Date date;
+                String time, amount, payeeOrPayer, description, type, category, paymentMethod, status;
+                try {
+                    date = new SimpleDateFormat(AppConstant.YYYY_MM_DD, Locale.ENGLISH).parse(tvTransactionDateInput.getText().toString());
+                } catch (ParseException e) {
+                    Log.e("Transaction Date Parse", "Failed to parse transaction date", e);
+                    return;
+                }
+                time = tvTransactionTimeInput.getText().toString();
+                amount = etTransactionAmount.getText().toString();
+                payeeOrPayer = etPayeeOrPayer.getText().toString();
+                description = etTransactionDescription.getText().toString();
+                type = spTransactionType.getSelectedItem().toString();
+                category = spTransactionCategory.getSelectedItem().toString();
+                paymentMethod = spTransactionPaymentMethod.getSelectedItem().toString();
+                status = spTransactionStatus.getSelectedItem().toString();
+                if (TextUtils.isEmpty(amount)) {
+                    etTransactionAmount.setError("Amount is required");
+                    return;
+                } else if (TextUtils.isEmpty(payeeOrPayer)) {
+                    etPayeeOrPayer.setError("Payee or Payer is required");
+                    return;
+                }
+                expense.setDate(date);
+                expense.setTime(time);
+                expense.setAmount(Double.parseDouble(amount));
+                expense.setPayeeOrPayer(payeeOrPayer);
+                expense.setDescription(description);
+                expense.setType(CategoryType.getEnum(type).ordinal());
+                for (int i = 0; i < categoryList.size(); i++) {
+                    Category c = categoryList.get(i);
+                    if (c.getName().equals(category)) {
+                        expense.setCategory(c.getId());
+                        break;
+                    }
+                }
+                for (int i = 0; i < paymentMethodList.size(); i++) {
+                    PaymentMethod c = paymentMethodList.get(i);
+                    if (c.getName().equals(paymentMethod)) {
+                        expense.setPaymentMethod(c.getId());
+                        break;
+                    }
+                }
+                for (int i = 0; i < expenseStatusList.size(); i++) {
+                    ExpenseStatus c = expenseStatusList.get(i);
+                    if (c.getName().equals(status)) {
+                        expense.setStatus(c.getId());
+                        break;
+                    }
+                }
+                Call<ResponseDto<Expense>> call = expense.getId() == null
+                        ? service.save(
+                        SharedPreferencesUtils.getAuthToken(getApplicationContext()),
+                        expense)
+                        : service.update(
+                        SharedPreferencesUtils.getAuthToken(getApplicationContext()),
+                        expense);
+                StrictMode.StrictMode();
+                try {
+                    Response<ResponseDto<Expense>> response = call.execute();
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(AddTransactionActivity.this, "Failed to save transaction", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    Toast.makeText(AddTransactionActivity.this, "Successfully saved transaction", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AddTransactionActivity.this, TransactionActivity.class));
+                } catch (IOException e) {
+                    Log.e("Transaction Save", "Failed to save transaction", e);
+                    Toast.makeText(AddTransactionActivity.this, "Failed to save transaction", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

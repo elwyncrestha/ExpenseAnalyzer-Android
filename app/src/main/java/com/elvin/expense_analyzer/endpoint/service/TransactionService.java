@@ -4,6 +4,7 @@ import com.elvin.expense_analyzer.endpoint.model.Expense;
 import com.elvin.expense_analyzer.endpoint.model.dto.ExpenseCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.PageableDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
+import com.elvin.expense_analyzer.endpoint.model.dto.TransactionDurationDto;
 
 import java.util.List;
 
@@ -46,4 +47,7 @@ public interface TransactionService {
 
     @GET(TransactionService.URL + "/{id}")
     Call<ResponseDto<Expense>> getById(@Header("Authorization") String token, @Path("id") String id);
+
+    @GET(TransactionService.URL + "/chart/transaction-duration")
+    Call<ResponseDto<TransactionDurationDto>> getByDurations(@Header("Authorization") String token);
 }

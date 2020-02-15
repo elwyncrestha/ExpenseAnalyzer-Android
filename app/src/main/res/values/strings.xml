@@ -66,4 +66,15 @@
     <string name="your_statuses">Your Statuses</string>
     <string name="add_expense_status">Add Status</string>
     <string name="status_name">Status Name</string>
+    <string name="transaction">Transaction</string>
+    <string name="your_transactions">Your Transactions</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="payee_payer">Payee/Payer</string>
+    <string name="transaction_date">Transaction Date</string>
+    <string name="transaction_type">Transaction Type</string>
+    <string name="amount">Amount</string>
+    <string name="transaction_time">Transaction Time</string>
+    <string name="description">Description</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
 </resources>

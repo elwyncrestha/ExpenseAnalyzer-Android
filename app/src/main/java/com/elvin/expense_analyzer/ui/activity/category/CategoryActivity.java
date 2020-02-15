@@ -108,6 +108,7 @@ public class CategoryActivity extends AppCompatActivity {
                         }
 
                         categoryAdapter.setCategoryList(categoryList);
+                        loadCounts();
                     }
 
                     @Override

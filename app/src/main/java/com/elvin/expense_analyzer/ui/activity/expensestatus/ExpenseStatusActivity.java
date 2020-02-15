@@ -106,6 +106,7 @@ public class ExpenseStatusActivity extends AppCompatActivity {
                         }
 
                         expenseStatusAdapter.setExpenseStatusList(expenseStatusList);
+                        loadCounts();
                     }
 
                     @Override

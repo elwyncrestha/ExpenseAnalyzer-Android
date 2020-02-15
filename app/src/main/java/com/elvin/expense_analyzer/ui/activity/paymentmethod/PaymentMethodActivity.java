@@ -106,6 +106,7 @@ public class PaymentMethodActivity extends AppCompatActivity {
                         }
 
                         paymentMethodAdapter.setPaymentMethodList(paymentMethodList);
+                        loadCounts();
                     }
 
                     @Override

@@ -1,7 +1,5 @@
 package com.elvin.expense_analyzer.endpoint.model;
 
-import com.elvin.expense_analyzer.endpoint.model.enums.CategoryType;
-
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -25,5 +23,5 @@ public class Expense extends BaseEntity {
     private Object paymentMethod;
     private Object status;
     private String description;
-    private CategoryType type;
+    private Integer type;
 }

@@ -92,9 +92,8 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
                         Toast.makeText(AddPaymentMethodActivity.this, "Failed to save payment method", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    PaymentMethod paymentMethod = response.body().getDetail();
+                    Toast.makeText(AddPaymentMethodActivity.this, "Successfully saved payment method", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddPaymentMethodActivity.this, PaymentMethodActivity.class));
-                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Payment Method Save", "Failed to save payment method", e);
                     Toast.makeText(AddPaymentMethodActivity.this, "Failed to save payment method", Toast.LENGTH_SHORT).show();

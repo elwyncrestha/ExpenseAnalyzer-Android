@@ -57,9 +57,9 @@
                         <TextView
                             style="@style/reportContentText"
                             android:layout_width="wrap_content"
-                            android:text="@string/income_transactions"
+                            android:text="@string/income"
                             android:textAlignment="center"
-                            android:textColor="#79D0A3" />
+                            android:textColor="@color/fragmentTextColor" />
 
                         <TextView
                             android:id="@+id/tvIncomeTransactionCount"
@@ -85,8 +85,8 @@
                         <TextView
                             style="@style/reportContentText"
                             android:layout_width="wrap_content"
-                            android:text="@string/expense_transactions"
-                            android:textColor="#79D0A3" />
+                            android:text="@string/expense"
+                            android:textColor="@color/fragmentTextColorNegative" />
 
                         <TextView
                             android:id="@+id/tvExpenseTransactionCount"

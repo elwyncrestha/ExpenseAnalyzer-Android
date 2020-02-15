@@ -160,6 +160,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llExploreMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/middleHeader"
@@ -175,6 +176,35 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlPieChartCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/llExploreMore"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChartCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlPieChartCategory"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChartExpenseType"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+
+            </RelativeLayout>
 
 
         </RelativeLayout>

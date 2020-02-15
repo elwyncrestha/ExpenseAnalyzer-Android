@@ -1,5 +1,6 @@
 package com.elvin.expense_analyzer.ui.activity.main;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -16,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
 import com.elvin.expense_analyzer.ui.activity.auth.LoginActivity;
+import com.elvin.expense_analyzer.utils.NotificationChannelUtils;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.elvin.expense_analyzer.utils.StrictMode;
@@ -29,6 +33,7 @@ import retrofit2.Response;
 public class ForemostActivity extends AppCompatActivity {
 
     private UserService userService;
+    private NotificationManagerCompat notificationManagerCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,9 @@ public class ForemostActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         this.userService = RetrofitUtils.getRetrofit().create(UserService.class);
+        this.notificationManagerCompat = NotificationManagerCompat.from(this);
+        NotificationChannelUtils channelUtils = new NotificationChannelUtils(this);
+        channelUtils.create();
     }
 
     @Override
@@ -78,10 +86,28 @@ public class ForemostActivity extends AppCompatActivity {
 
             SharedPreferencesUtils.setAuthToken(getApplicationContext(), null);
 
+            notify(
+                    NotificationChannelUtils.CHANNEL_1,
+                    1,
+                    R.drawable.ic_notifications_active_black_24dp,
+                    "Logging out?",
+                    "Don't forget to track your expense!!!"
+            );
+
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } catch (IOException e) {
             Log.e("Logout", "Failed to logout", e);
             Toast.makeText(getApplicationContext(), "Failed to logout", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void notify(String channelId, int notificationId, int icon, String title, String text) {
+        Notification notification = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(icon)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManagerCompat.notify(notificationId, notification);
     }
 }

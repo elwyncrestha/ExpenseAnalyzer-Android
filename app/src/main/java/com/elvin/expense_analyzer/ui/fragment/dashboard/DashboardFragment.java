@@ -20,6 +20,7 @@ import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.TransactionDurationDto;
 import com.elvin.expense_analyzer.endpoint.service.CategoryService;
 import com.elvin.expense_analyzer.endpoint.service.TransactionService;
+import com.elvin.expense_analyzer.ui.listener.ShakeListener;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
 import com.github.mikephil.charting.charts.PieChart;
@@ -42,6 +43,7 @@ public class DashboardFragment extends Fragment {
     private CategoryService categoryService;
     private TextView dashboardCountToday, dashboardCountThisWeek, dashboardCountThisMonth, dashboardCountThisYear;
     private PieChart pieChartCategory, pieChartExpenseType;
+    private ShakeListener shakeListener;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class DashboardFragment extends Fragment {
         loadCounts();
         loadPieChartCategory();
         loadPieChartExpenseType();
+        refreshOnShake();
 
         return root;
     }
@@ -164,6 +167,19 @@ public class DashboardFragment extends Fragment {
             public void onFailure(Call<ResponseDto<TransactionDurationDto>> call, Throwable t) {
                 Log.e("Dashboard Count", "Failed to load counts", t);
                 Toast.makeText(getContext(), "Failed to load counts", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void refreshOnShake() {
+        shakeListener = new ShakeListener(getContext());
+        shakeListener.setOnShakeListener(new ShakeListener.OnShakeListener() {
+            @Override
+            public void onShake() {
+                Toast.makeText(getContext(), "Refreshing data!!!", Toast.LENGTH_SHORT).show();
+                loadCounts();
+                loadPieChartCategory();
+                loadPieChartExpenseType();
             }
         });
     }

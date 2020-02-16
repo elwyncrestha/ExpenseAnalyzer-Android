@@ -18,7 +18,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.elvin.expense_analyzer.R;
 import com.elvin.expense_analyzer.endpoint.service.UserService;
+import com.elvin.expense_analyzer.ui.activity.about.AboutActivity;
 import com.elvin.expense_analyzer.ui.activity.auth.LoginActivity;
+import com.elvin.expense_analyzer.ui.listener.GyroListener;
 import com.elvin.expense_analyzer.utils.NotificationChannelUtils;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -49,6 +51,7 @@ public class ForemostActivity extends AppCompatActivity {
         this.notificationManagerCompat = NotificationManagerCompat.from(this);
         NotificationChannelUtils channelUtils = new NotificationChannelUtils(this);
         channelUtils.create();
+        switchActivityOnMove();
     }
 
     @Override
@@ -109,5 +112,15 @@ public class ForemostActivity extends AppCompatActivity {
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
         notificationManagerCompat.notify(notificationId, notification);
+    }
+
+    private void switchActivityOnMove() {
+        GyroListener gyroListener = new GyroListener(getApplicationContext());
+        gyroListener.setOnGyroChange(new GyroListener.OnGyroChange() {
+            @Override
+            public void onChange(boolean leftTurn) {
+                startActivity(new Intent(ForemostActivity.this, AboutActivity.class));
+            }
+        });
     }
 }

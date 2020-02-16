@@ -85,6 +85,6 @@ public class ShakeListener implements SensorListener {
     }
 
     public interface OnShakeListener {
-        public void onShake();
+        void onShake();
     }
 }

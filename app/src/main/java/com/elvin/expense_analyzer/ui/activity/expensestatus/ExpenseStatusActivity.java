@@ -19,6 +19,7 @@ import com.elvin.expense_analyzer.endpoint.model.ExpenseStatus;
 import com.elvin.expense_analyzer.endpoint.model.dto.ExpenseStatusCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.ExpenseStatusService;
+import com.elvin.expense_analyzer.ui.activity.main.ForemostActivity;
 import com.elvin.expense_analyzer.ui.adapter.ExpenseStatusAdapter;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -164,6 +165,9 @@ public class ExpenseStatusActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.itemAddExpenseStatus) {
             startActivity(new Intent(getApplicationContext(), AddExpenseStatusActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), ForemostActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

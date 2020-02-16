@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
@@ -262,6 +265,7 @@ public class AddTransactionActivity extends AppCompatActivity implements
                     }
                     Toast.makeText(AddTransactionActivity.this, "Successfully saved transaction", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddTransactionActivity.this, TransactionActivity.class));
+                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Transaction Save", "Failed to save transaction", e);
                     Toast.makeText(AddTransactionActivity.this, "Failed to save transaction", Toast.LENGTH_SHORT).show();
@@ -422,6 +426,22 @@ public class AddTransactionActivity extends AppCompatActivity implements
             }
         }
         this.spTransactionStatus.setSelection(selected);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), TransactionActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
@@ -94,11 +97,28 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
                     }
                     Toast.makeText(AddPaymentMethodActivity.this, "Successfully saved payment method", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddPaymentMethodActivity.this, PaymentMethodActivity.class));
+                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Payment Method Save", "Failed to save payment method", e);
                     Toast.makeText(AddPaymentMethodActivity.this, "Failed to save payment method", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), PaymentMethodActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

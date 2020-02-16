@@ -36,6 +36,7 @@ public class ForemostActivity extends AppCompatActivity {
 
     private UserService userService;
     private NotificationManagerCompat notificationManagerCompat;
+    boolean movedAlready = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +120,10 @@ public class ForemostActivity extends AppCompatActivity {
         gyroListener.setOnGyroChange(new GyroListener.OnGyroChange() {
             @Override
             public void onChange(boolean leftTurn) {
-                startActivity(new Intent(ForemostActivity.this, AboutActivity.class));
+                if (!movedAlready) {
+                    startActivity(new Intent(ForemostActivity.this, AboutActivity.class));
+                    movedAlready = true;
+                }
             }
         });
     }

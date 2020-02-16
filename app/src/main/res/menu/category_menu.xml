@@ -5,5 +5,9 @@
         android:id="@+id/itemAddCategory"
         android:title="@string/add_category"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/itemGoBack"
+        android:title="@string/go_back"
+        app:showAsAction="never" />
 
 </menu>

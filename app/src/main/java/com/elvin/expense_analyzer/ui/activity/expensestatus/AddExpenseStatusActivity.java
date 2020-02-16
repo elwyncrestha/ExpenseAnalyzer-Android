@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.elvin.expense_analyzer.R;
@@ -94,11 +97,28 @@ public class AddExpenseStatusActivity extends AppCompatActivity {
                     }
                     Toast.makeText(AddExpenseStatusActivity.this, "Successfully saved status", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddExpenseStatusActivity.this, ExpenseStatusActivity.class));
+                    finishAffinity();
                 } catch (IOException e) {
                     Log.e("Expense Status Save", "Failed to save expense status", e);
                     Toast.makeText(AddExpenseStatusActivity.this, "Failed to save expense status", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), ExpenseStatusActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

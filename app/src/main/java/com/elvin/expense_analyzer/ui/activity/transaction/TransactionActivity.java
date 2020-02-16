@@ -19,6 +19,7 @@ import com.elvin.expense_analyzer.endpoint.model.Expense;
 import com.elvin.expense_analyzer.endpoint.model.dto.ExpenseCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.TransactionService;
+import com.elvin.expense_analyzer.ui.activity.main.ForemostActivity;
 import com.elvin.expense_analyzer.ui.adapter.TransactionAdapter;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -166,6 +167,9 @@ public class TransactionActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.itemAddTransaction) {
             startActivity(new Intent(getApplicationContext(), AddTransactionActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), ForemostActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -5,5 +5,9 @@
         android:id="@+id/itemAddPaymentMethod"
         android:title="@string/add_payment_method"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/itemGoBack"
+        android:title="@string/go_back"
+        app:showAsAction="never" />
 
 </menu>

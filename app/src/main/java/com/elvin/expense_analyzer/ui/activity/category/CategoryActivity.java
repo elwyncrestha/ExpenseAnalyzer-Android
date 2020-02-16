@@ -19,6 +19,7 @@ import com.elvin.expense_analyzer.endpoint.model.Category;
 import com.elvin.expense_analyzer.endpoint.model.dto.CategoryCountDto;
 import com.elvin.expense_analyzer.endpoint.model.dto.ResponseDto;
 import com.elvin.expense_analyzer.endpoint.service.CategoryService;
+import com.elvin.expense_analyzer.ui.activity.main.ForemostActivity;
 import com.elvin.expense_analyzer.ui.adapter.CategoryAdapter;
 import com.elvin.expense_analyzer.utils.RetrofitUtils;
 import com.elvin.expense_analyzer.utils.SharedPreferencesUtils;
@@ -166,6 +167,9 @@ public class CategoryActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.itemAddCategory) {
             startActivity(new Intent(getApplicationContext(), AddCategoryActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.itemGoBack) {
+            startActivity(new Intent(getApplicationContext(), ForemostActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

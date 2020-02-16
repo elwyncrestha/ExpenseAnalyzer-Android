@@ -47,15 +47,19 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.cardCategory:
                 startActivity(new Intent(getContext(), CategoryActivity.class));
+                getActivity().finish();
                 break;
             case R.id.cardPaymentMethod:
                 startActivity(new Intent(getContext(), PaymentMethodActivity.class));
+                getActivity().finish();
                 break;
             case R.id.cardStatus:
                 startActivity(new Intent(getContext(), ExpenseStatusActivity.class));
+                getActivity().finish();
                 break;
             case R.id.cardTransaction:
                 startActivity(new Intent(getContext(), TransactionActivity.class));
+                getActivity().finish();
                 break;
             case R.id.cardAbout:
                 startActivity(new Intent(getContext(), AboutActivity.class));

@@ -15,6 +15,7 @@ import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * @author Elvin Shrestha on 2/10/2020
@@ -38,8 +39,8 @@ public interface PaymentMethodService {
     @DELETE(PaymentMethodService.URL + "/{id}")
     Call<Void> delete(@Header("Authorization") String token, @Path("id") String id);
 
-    @GET(PaymentMethodService.URL + "/list?page={page}&size={size}")
-    Call<ResponseDto<PageableDto<PaymentMethod>>> getPageable(@Header("Authorization") String token, @Path("page") Integer page, @Path("size") Integer size);
+    @GET(PaymentMethodService.URL + "/list")
+    Call<ResponseDto<PageableDto<PaymentMethod>>> getPageable(@Header("Authorization") String token, @Query("page") Integer page, @Query("size") Integer size);
 
     @GET(PaymentMethodService.URL + "/status-count")
     Call<ResponseDto<PaymentMethodCountDto>> statusCount(@Header("Authorization") String token);
